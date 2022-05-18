@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="banner" 
+style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @garden.img_url %>);">
+  <div class="container">
+    <h1><%= @garden.name %></h1>    
+    <a class="btn btn-flat" href="<%= new_garden_plant_path(@garden) %>">Add a plant!</a>
+  </div>
+</div>
+
+<div class="row">
+  <% @plants.each do |plant| %>
+    <div class="col-4">
+      <%= plant.name%>
+      <img src="<%=plant.img_url%>"/>
+    </div>
+  <%end%>
+</div>
+
+<div>
+  <%= link_to "Edit this garden", edit_garden_path(@garden) %> |
+  <%= link_to "Back to gardens", gardens_path %>
+
+  <%= button_to "Destroy this garden", @garden, method: :delete %>
+</div>
